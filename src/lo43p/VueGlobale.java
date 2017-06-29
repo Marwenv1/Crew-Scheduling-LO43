@@ -12,8 +12,10 @@ import org.jfree.chart.ChartPanel;
 
 /**
  *
- * @author Med Amine
+ * @author LO43P
  */
+
+
 public class VueGlobale extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private DiagrammeGantt gc;

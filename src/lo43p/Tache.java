@@ -10,8 +10,14 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+/**
+ *
+ * @author LO43P
+ */
+
 
 public class Tache {
+    //Définition des paramétres des taches
 	private final int id_tache;
 	private final Date StartTime, FinishTime;
 	private final String StationDepart, StationArrivee;
@@ -20,14 +26,18 @@ public class Tache {
 	public Tache(int id_tache, int StartTime, int FinishTime, String StationDepart,
 			String StationArrivee) {
 		this.id_tache = id_tache;
+                //Calcul de l'heure de début en minutes
 		this.StartTime = new Date(1000L * 60L * (StartTime-60));
+                //Calcul de l'heure de fin en minutes
 		this.FinishTime = new Date(1000L * 60L * (FinishTime-60));
+                //définition de la station de départ
 		this.StationDepart = NomStation(StationDepart);
+                //définition de la station d'arrivée
 		this.StationArrivee = NomStation(StationArrivee);
                 
                
 	}
-
+    //Permettent de récupérer les différentes heures
 	public String getHeureArriveeConvert() {
 		return sdf.format(this.FinishTime);
 	}
@@ -55,7 +65,7 @@ public class Tache {
 	public String getLieuDepart() {
 		return this.StationDepart;
 	}
-
+        //Permet de récupérer le service associé à la tâche
 	public String getService() {
 		final Calendar calendar = GregorianCalendar.getInstance();
 		calendar.setTime(this.getHeureDepartMinutes());
@@ -70,7 +80,7 @@ public class Tache {
 		else
 			return "nuit";
 	}
-
+        //Permet de récupérer la durée de la tâche
 	public Date getTempsTrajet() {
 		return new Date(FinishTime.getTime() - StartTime.getTime());
 	}
@@ -81,7 +91,7 @@ public class Tache {
         }
 
 	
-
+        //Définition des noms de stations selon la lettre indiquée
 	private String NomStation(String lieu) {
 		switch (lieu) {
 		case "A":
@@ -112,7 +122,7 @@ public class Tache {
 	}
         
         public class TacheTableModel extends AbstractTableModel {
-
+            //Défintion des variables pour le tableau
 	private static final long serialVersionUID = 1L;
 	final private String[] titles = { "Service", "Lieu départ", "Heure départ",
 			"Lieu arrivée", "Heure arrivée", "Temps de trajet" };
@@ -121,19 +131,22 @@ public class Tache {
 	public TacheTableModel(List<Tache> tasks) {
 		this.tasks = tasks;
 	}
-
+        
+        //Permet de récupérer le nombre de colonne
 	public int getColumnCount() {
 		return this.titles.length;
 	}
-
+        
+        //Permet de récupérer les noms de colonne
 	public String getColumnName(int columnIndex) {
 		return this.titles[columnIndex];
 	}
-
+        //Permet de récupérer le nombre de tâches
 	public int getRowCount() {
 		return this.tasks.size();
 	}
 
+        //Récupérer la valeur selon l'index du tableau choisi
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		switch (columnIndex) {
 		case 0:

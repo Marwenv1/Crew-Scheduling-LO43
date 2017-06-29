@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Youness-PC
+ * @author LO43P
  */
 public class configpup {
     

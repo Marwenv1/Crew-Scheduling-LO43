@@ -5,8 +5,6 @@
  */
 package lo43p;
 
-import java.io.File;
-import java.util.Scanner;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,8 +13,10 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Youness-PC
+ * @author LO43P
  */
+
+
 public class Menu extends Application {
     
     @Override
